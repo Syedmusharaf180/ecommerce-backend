@@ -50,8 +50,30 @@ const verifySignUpBody = async (req, res, next) => {
     }
 }
 
+const verifySignInBody = (req, res, next) => {
+    
+    // check for userId
+    if (!req.body.userId) {
+        return res.status(400).send({
+            message : "userId is not provided"
+        })
+    }
+    
+    // check for password
+    if (!req.body.password) {
+        return res.status(400).send({
+            message : "password is not provided"
+        })
+    }
+
+    // move to next 
+    next()
+
+}
+
 module.exports = {
-    verifySignUpBody : verifySignUpBody
+    verifySignUpBody: verifySignUpBody,
+    verifySignInBody: verifySignInBody
 }
 
 // this middleware should be used or imported in routes(authroutes), in order to check the req.body while sending the http request 
