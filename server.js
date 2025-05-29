@@ -75,6 +75,9 @@ require("./routes/auth.routes")(app) // here we are calling routes and passing a
 // at this point now server knows about routes and routes knows about the controller and controller knows model
 // everything is now connected with each other.
 
+// stiching the category routes 
+require("./routes/category.routes")(app)
+
 // start the server 
 app.listen(server_config.PORT, () => {
     console.log("Server started at port number : ",server_config.PORT)
